@@ -4,4 +4,6 @@
     <string name="simulate">Simulasi</string>
     <string name="tracking">Tracking</string>
     <string name="best_seller">Best Seller</string>
+    <string name="drawer_close">Close</string>
+    <string name="drawer_open">Open</string>
 </resources>

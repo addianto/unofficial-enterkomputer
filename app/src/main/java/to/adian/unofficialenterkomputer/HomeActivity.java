@@ -17,6 +17,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, HomeFragment.newInstance())
+                    .commitNow();
+        }
     }
 
     @Override

@@ -21,6 +21,7 @@ public class SeedDatabaseWorker extends Worker {
         super(context, params);
     }
 
+    @NonNull
     @Override
     public Result doWork() {
         Result result;

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Unofficial EnterKomputer</string>
+    <string name="app_name_subtitle">For Academic Purpose</string>
     <string name="home">Home</string>
     <string name="simulate">Simulasi</string>
     <string name="tracking">Tracking</string>

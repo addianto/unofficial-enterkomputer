@@ -9,7 +9,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 @Dao
-interface CategoryDao {
+public interface CategoryDao {
 
     @Query("SELECT * FROM categories ORDER BY name")
     LiveData<List<Category>> getCategories();

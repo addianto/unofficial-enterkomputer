@@ -16,6 +16,7 @@ buildscript {
         lifecycleVersion = '2.0.0'
         roomVersion = '2.0.0'
         supportLibraryVersion = '1.0.0'
+        workVersion = '1.0.0-alpha10'
     }
 
     dependencies {

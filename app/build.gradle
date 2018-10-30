@@ -27,6 +27,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     implementation "com.google.android.material:material:$rootProject.supportLibraryVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"

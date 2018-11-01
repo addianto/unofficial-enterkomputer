@@ -7,4 +7,5 @@
     <string name="best_seller">Best Seller</string>
     <string name="drawer_close">Close</string>
     <string name="drawer_open">Open</string>
+    <string name="dummy_text">Lorem Ipsum</string>
 </resources>

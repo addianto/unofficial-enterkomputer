@@ -1,7 +1,6 @@
 package to.adian.unofficialenterkomputer.data;
 
 import android.content.Context;
-import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;

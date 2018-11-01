@@ -30,6 +30,7 @@ public class SeedDatabaseWorker extends Worker {
             AppDatabase db = AppDatabase.getInstance(getApplicationContext());
             db.categoryDao().insertAll(getSeedCategories());
             result = Result.SUCCESS;
+            Log.d(TAG, "Database was seeded successfully");
         } catch (Exception ex) {
             Log.e(TAG, "Error seeding database", ex);
             result = Result.FAILURE;

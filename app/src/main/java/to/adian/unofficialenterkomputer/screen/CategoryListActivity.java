@@ -24,7 +24,7 @@ public class CategoryListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, R.string.drawer_open, R.string.drawer_close);
+                drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }

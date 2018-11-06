@@ -57,12 +57,9 @@ public class CategoryListFragment extends Fragment {
 
     private void subscribeUI(final ListAdapter listAdapter) {
         categoryListViewModel.getCategories().observe(getViewLifecycleOwner(),
-                new Observer<List<Category>>() {
-                    @Override
-                    public void onChanged(List<Category> categories) {
-                        if (categories != null) {
-                            listAdapter.submitList(categories);
-                        }
+                categories -> {
+                    if (categories != null) {
+                        listAdapter.submitList(categories);
                     }
                 });
         Log.d(TAG, "CategoryListViewModel has been set to observe this fragment (?)");

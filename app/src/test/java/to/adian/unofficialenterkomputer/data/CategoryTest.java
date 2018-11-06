@@ -11,7 +11,7 @@ public class CategoryTest {
 
     @Before
     public void setUp() throws Exception {
-        fixture = new Category(1, "Lorem Ipsum");
+        fixture = new Category(1, "Lorem Ipsum", "https://localhost/category");
     }
 
     @Test
@@ -22,6 +22,11 @@ public class CategoryTest {
     @Test
     public void test_getName() {
         assertEquals("Lorem Ipsum", fixture.getName());
+    }
+
+    @Test
+    public void test_getEndpoint() {
+        assertEquals("https://localhost/category", fixture.getEndpoint());
     }
 
     @Test

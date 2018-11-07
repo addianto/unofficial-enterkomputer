@@ -11,7 +11,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import to.adian.unofficialenterkomputer.worker.SeedDatabaseWorker;
 
-@Database(entities = {Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Product.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "UnEnterKomputer.db";

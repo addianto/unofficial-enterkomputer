@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.screen;
+package to.adian.unofficialenterkomputer.screen.main;
 
 import android.os.Bundle;
 
@@ -10,14 +10,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import to.adian.unofficialenterkomputer.R;
 
-public class CategoryListActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_list);
+        setContentView(R.layout.activity_main);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);

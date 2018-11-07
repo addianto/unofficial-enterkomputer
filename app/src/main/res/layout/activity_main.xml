@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".screen.CategoryListActivity">
+        tools:context=".screen.main.MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +30,8 @@
             </com.google.android.material.appbar.AppBarLayout>
 
             <fragment
-                android:id="@+id/category_list_fragment"
-                android:name="to.adian.unofficialenterkomputer.screen.CategoryListFragment"
+                android:id="@+id/content_container"
+                android:name="to.adian.unofficialenterkomputer.screen.categorylist.CategoryListFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.screen;
+package to.adian.unofficialenterkomputer.screen.categorylist;
 
 import androidx.lifecycle.ViewModelProviders;
 

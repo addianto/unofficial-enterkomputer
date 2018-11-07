@@ -25,7 +25,7 @@ public class CategoryRepository {
     public static synchronized CategoryRepository getInstance(CategoryDao categoryDao) {
         if (categoryRepository == null) {
             categoryRepository = new CategoryRepository(categoryDao);
-            Log.d(TAG, "Instantiated CategoryRepository singleton for the 1st time");
+            Log.d(TAG, "Created category repository for the 1st time");
         }
 
         return categoryRepository;

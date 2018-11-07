@@ -21,7 +21,7 @@ public class CategoryListViewModelFactory extends ViewModelProvider.NewInstanceF
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T viewModel = (T) new CategoryListViewModel(categoryRepository);
-        Log.d(TAG, "Created CategoryListViewModel");
+        Log.d(TAG, "Created view model for category list");
 
         return viewModel;
     }

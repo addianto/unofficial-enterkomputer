@@ -10,9 +10,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import to.adian.unofficialenterkomputer.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContract.View {
 
     private DrawerLayout drawerLayout;
+    private MainContract.Presenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,10 +32,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        closeMenuDrawer();
+    }
+
+    @Override
+    public void openMenuDrawer() {
+        if (!drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.openDrawer(GravityCompat.END);
+        }
+    }
+
+    @Override
+    public void closeMenuDrawer() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void setPresenter(MainContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 }

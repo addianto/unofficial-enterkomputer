@@ -38,6 +38,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.android.volley:volley:$rootProject.volleyVersion"
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation "androidx.arch.core:core-testing:$rootProject.lifecycleVersion"

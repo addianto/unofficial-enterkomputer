@@ -18,6 +18,7 @@ buildscript {
         supportLibraryVersion = '1.0.0'
         workVersion = '1.0.0-alpha10'
         gsonVersion = '2.8.5'
+        volleyVersion = '1.1.1'
     }
 
     dependencies {

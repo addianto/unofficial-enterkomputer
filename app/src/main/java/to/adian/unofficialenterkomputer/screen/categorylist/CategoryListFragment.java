@@ -23,25 +23,22 @@ import to.adian.unofficialenterkomputer.data.CategoryRepository;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModel;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModelFactory;
 
-public class CategoryListFragment extends Fragment {
+public class CategoryListFragment extends Fragment implements CategoryListContract.View {
 
     private static final String TAG = CategoryListFragment.class.getName();
+    private RecyclerView categoryList;
     private CategoryListViewModel categoryListViewModel;
+    private CategoryListContract.Presenter presenter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
+        categoryList = view.findViewById(R.id.category_list);
 
         CategoryListViewModelFactory factory = getCategoryListViewModelFactory(getContext());
         categoryListViewModel = ViewModelProviders.of(this, factory)
                 .get(CategoryListViewModel.class);
-
-        ListAdapter listAdapter = new CategoryListAdapter();
-        RecyclerView categoryList = view.findViewById(R.id.category_list);
-        categoryList.setAdapter(listAdapter);
-
-        subscribeUI(listAdapter);
 
         return view;
     }
@@ -70,5 +67,22 @@ public class CategoryListFragment extends Fragment {
         Log.d(TAG, "Created CategoryListViewModelFactory");
 
         return factory;
+    }
+
+    @Override
+    public void setPresenter(CategoryListContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void observeViewModel(CategoryListViewModel viewModel) {
+        ListAdapter listAdapter = new CategoryListAdapter();
+        categoryList.setAdapter(listAdapter);
+        viewModel.getCategories().observe(getViewLifecycleOwner(),
+                categories -> {
+                    if (categories != null) {
+                        listAdapter.submitList(categories);
+                    }
+                });
     }
 }

@@ -20,7 +20,7 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapt
 
         private ListItemCategoryBinding binding;
 
-        CategoryViewHolder(ListItemCategoryBinding binding) {
+        CategoryViewHolder(@NonNull ListItemCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -48,11 +48,10 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapt
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                  int viewType) {
-        ListItemCategoryBinding view = ListItemCategoryBinding
+        ListItemCategoryBinding binding = ListItemCategoryBinding
                 .inflate(LayoutInflater.from(parent.getContext()),
-                        parent,
-                        false);
-        return new CategoryViewHolder(view);
+                        parent, false);
+        return new CategoryViewHolder(binding);
     }
 
     @Override

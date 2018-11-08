@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.data.Category;
 import to.adian.unofficialenterkomputer.databinding.ListItemCategoryBinding;
+import to.adian.unofficialenterkomputer.screen.categorylist.CategoryListContract;
 
 public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapter.CategoryViewHolder> {
 
-    public CategoryListAdapter() {
+    private CategoryListContract.View view;
+
+    public CategoryListAdapter(CategoryListContract.View view) {
         super(new CategoryDiffUtil());
+        this.view = view;
     }
 
     static class CategoryViewHolder extends RecyclerView.ViewHolder {
@@ -27,6 +31,7 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapt
 
         void bind(Category category) {
             binding.setCategory(category);
+            binding.setClickListener(() -> view.showProductList(category.getEndpoint()));
             binding.executePendingBindings();
         }
     }

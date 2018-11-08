@@ -9,11 +9,11 @@ public interface CategoryListContract {
 
     interface Presenter extends BasePresenter {
 
-        void openProductListByCategory(Category category);
+        // Empty interface
     }
 
     interface View extends BaseView<Presenter> {
 
-        void observeViewModel(CategoryListViewModel viewModel);
+        void showProductList(String endpoint);
     }
 }

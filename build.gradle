@@ -15,7 +15,7 @@ buildscript {
         junitVersion = '4.12'
         lifecycleVersion = '2.0.0'
         roomVersion = '2.0.0'
-        supportLibraryVersion = '1.0.0'
+        supportLibraryVersion = '1.0.2'
         workVersion = '1.0.0-alpha10'
         gsonVersion = '2.8.5'
         volleyVersion = '1.1.1'

@@ -1,0 +1,147 @@
+[
+    {
+        "id": "1",
+        "name": "Accessories",
+        "endpoint": "https://www.enterkomputer.com/api/product/accessories.json"
+    },
+    {
+        "id": "2",
+        "name": "All-in-One",
+        "endpoint": "https://www.enterkomputer.com/api/product/allinone.json"
+    },
+    {
+        "id": "3",
+        "name": "Casing",
+        "endpoint": "https://www.enterkomputer.com/api/product/casing.json"
+    },
+    {
+        "id": "4",
+        "name": "Cooler Fan",
+        "endpoint": "https://www.enterkomputer.com/api/product/coolerfan.json"
+    },
+    {
+        "id": "5",
+        "name": "Drawing",
+        "endpoint": "https://www.enterkomputer.com/api/product/drawing.json"
+    },
+    {
+        "id": "6",
+        "name": "Drone",
+        "endpoint": "https://www.enterkomputer.com/api/product/drone.json"
+    },
+    {
+        "id": "7",
+        "name": "Flashdisk",
+        "endpoint": "https://www.enterkomputer.com/api/product/flashdisk.json"
+    },
+    {
+        "id": "8",
+        "name": "Gadget",
+        "endpoint": "https://www.enterkomputer.com/api/product/gadget.json"
+    },
+    {
+        "id": "9",
+        "name": "Harddisk",
+        "endpoint": "https://www.enterkomputer.com/api/product/harddisk.json"
+    },
+    {
+        "id": "10",
+        "name": "Headset",
+        "endpoint": "https://www.enterkomputer.com/api/product/headset.json"
+    },
+    {
+        "id": "11",
+        "name": "Keyboard",
+        "endpoint": "https://www.enterkomputer.com/api/product/keyboard.json"
+    },
+    {
+        "id": "12",
+        "name": "LCD",
+        "endpoint": "https://www.enterkomputer.com/api/product/lcd.json"
+    },
+    {
+        "id": "13",
+        "name": "Memory Card",
+        "endpoint": "https://www.enterkomputer.com/api/product/memorycard.json"
+    },
+    {
+        "id": "14",
+        "name": "RAM",
+        "endpoint": "https://www.enterkomputer.com/api/product/memoryram.json"
+    },
+    {
+        "id": "15",
+        "name": "Motherboard",
+        "endpoint": "https://www.enterkomputer.com/api/product/motherboard.json"
+    },
+    {
+        "id": "16",
+        "name": "Networking",
+        "endpoint": "https://www.enterkomputer.com/api/product/networking.json"
+    },
+    {
+        "id": "17",
+        "name": "Notebook",
+        "endpoint": "https://www.enterkomputer.com/api/product/notebook.json"
+    },
+    {
+        "id": "18",
+        "name": "Optical",
+        "endpoint": "https://www.enterkomputer.com/api/product/optical.json"
+    },
+    {
+        "id": "19",
+        "name": "Printer",
+        "endpoint": "https://www.enterkomputer.com/api/product/printer.json"
+    },
+    {
+        "id": "20",
+        "name": "Processor",
+        "endpoint": "https://www.enterkomputer.com/api/product/processor.json"
+    },
+    {
+        "id": "21",
+        "name": "Projector",
+        "endpoint": "https://www.enterkomputer.com/api/product/projector.json"
+    },
+    {
+        "id": "22",
+        "name": "PSU",
+        "endpoint": "https://www.enterkomputer.com/api/product/psu.json"
+    },
+    {
+        "id": "23",
+        "name": "Server",
+        "endpoint": "https://www.enterkomputer.com/api/product/server.json"
+    },
+    {
+        "id": "24",
+        "name": "Software",
+        "endpoint": "https://www.enterkomputer.com/api/product/software.json"
+    },
+    {
+        "id": "25",
+        "name": "Soundcard",
+        "endpoint": "https://www.enterkomputer.com/api/product/soundcard.json"
+    },
+    {
+        "id": "26",
+        "name": "Speaker",
+        "endpoint": "https://www.enterkomputer.com/api/product/speaker.json"
+    },
+    {
+        "id": "27",
+        "name": "SSD",
+        "endpoint": "https://www.enterkomputer.com/api/product/ssd.json"
+    },
+    {
+        "id": "28",
+        "name": "UPS",
+        "endpoint": "https://www.enterkomputer.com/api/product/ups.json"
+    },
+    {
+        "id": "29",
+        "name": "VGA",
+        "endpoint": "https://www.enterkomputer.com/api/product/vga.json"
+    }
+]

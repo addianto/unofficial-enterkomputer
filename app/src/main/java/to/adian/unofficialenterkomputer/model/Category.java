@@ -1,5 +1,7 @@
 package to.adian.unofficialenterkomputer.model;
 
+import java.util.Locale;
+
 public class Category {
 
     private final int id;
@@ -26,7 +28,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return String.format("Category(id=%d, name=%s, endpoint=%s)", id, name,
-                endpoint);
+        return String.format(Locale.ENGLISH,
+                "Category(id=%d, name=%s, endpoint=%s)", id, name, endpoint);
     }
 }

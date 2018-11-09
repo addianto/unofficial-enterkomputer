@@ -17,6 +17,7 @@ buildscript {
         espressoVersion = '3.1.0'
         junitVersion = '4.12'
         materialComponentVersion = '1.1.0-alpha01'
+        roomVersion = '2.0.0'
         supportLibraryVersion = '1.0.2'
     }
 }

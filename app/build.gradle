@@ -16,13 +16,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
     implementation "com.google.android.material:material:$rootProject.materialComponentVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }

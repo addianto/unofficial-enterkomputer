@@ -2,8 +2,13 @@ package to.adian.unofficialenterkomputer.model;
 
 import java.util.Locale;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "categories")
 public class Category {
 
+    @PrimaryKey
     private final int id;
     private final String name;
     private final String endpoint;

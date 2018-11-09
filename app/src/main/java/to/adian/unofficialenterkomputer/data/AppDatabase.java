@@ -11,13 +11,14 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import to.adian.unofficialenterkomputer.worker.SeedDatabaseWorker;
 
-@Database(entities = {Category.class, Product.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Product.class}, version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "UnEnterKomputer.db";
+    private static final String DB_NAME = "unofficial-ek.db";
     private static volatile AppDatabase instance = null;
 
     public abstract CategoryDao categoryDao();
+    public abstract ProductDao productDao();
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (instance == null) {
@@ -30,6 +31,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase buildDatabase(Context context) {
         return Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
                 .addCallback(new Callback() {
+
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate(db);
@@ -38,6 +40,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                         .build();
                         WorkManager.getInstance().enqueue(request);
                     }
-                }).build();
+                })
+                .build();
     }
 }

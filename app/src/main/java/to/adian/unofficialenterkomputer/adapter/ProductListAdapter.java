@@ -24,11 +24,6 @@ public class ProductListAdapter extends ListAdapter<Product, ProductListAdapter.
             super(binding.getRoot());
             this.binding = binding;
         }
-
-        void bind(Product product) {
-            binding.setProduct(product);
-            binding.executePendingBindings();
-        }
     }
 
     static class ProductDiffUtil extends DiffUtil.ItemCallback<Product> {
@@ -58,7 +53,8 @@ public class ProductListAdapter extends ListAdapter<Product, ProductListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = getItem(position);
-        holder.bind(product);
+        holder.binding.setProduct(product);
+        holder.binding.executePendingBindings();
         holder.itemView.setTag(product);
     }
 }

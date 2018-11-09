@@ -16,12 +16,6 @@ public class CategoryRepository {
         this.categoryDao = categoryDao;
     }
 
-    public LiveData<List<Category>> getCategories() {
-        LiveData<List<Category>> categories = categoryDao.getCategories();
-
-        return categories;
-    }
-
     public static synchronized CategoryRepository getInstance(CategoryDao categoryDao) {
         if (categoryRepository == null) {
             categoryRepository = new CategoryRepository(categoryDao);
@@ -30,4 +24,17 @@ public class CategoryRepository {
 
         return categoryRepository;
     }
+
+    public LiveData<Category> getCategory(int id) {
+        LiveData<Category> category = categoryRepository.getCategory(id);
+
+        return category;
+    }
+
+    public LiveData<List<Category>> getCategories() {
+        LiveData<List<Category>> categories = categoryDao.getCategories();
+
+        return categories;
+    }
+
 }

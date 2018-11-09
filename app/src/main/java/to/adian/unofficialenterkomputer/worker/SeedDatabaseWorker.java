@@ -33,6 +33,7 @@ public class SeedDatabaseWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+        Log.d(TAG, "Seeding database");
         Result result;
 
         try {
@@ -56,6 +57,8 @@ public class SeedDatabaseWorker extends Worker {
         List<Category> categories = Collections.emptyList();
         Type categoryType = new TypeToken<List<Category>>() {
         }.getType();
+
+        // GSON
 
         try {
             InputStream inputStream = appContext.getAssets().open(assetFileName,

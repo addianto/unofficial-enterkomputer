@@ -1,5 +1,6 @@
 package to.adian.unofficialenterkomputer.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,15 +10,16 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.data.Category;
 import to.adian.unofficialenterkomputer.databinding.ListItemCategoryBinding;
-import to.adian.unofficialenterkomputer.screen.categorylist.CategoryListContract;
+import to.adian.unofficialenterkomputer.screen.CategoryListActivity;
 
-public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapter.CategoryViewHolder> {
+public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.CategoryViewHolder> {
 
-    private CategoryListContract.View view;
+    private static final String TAG = CategoryAdapter.class.getName();
+    private final CategoryListActivity activity;
 
-    public CategoryListAdapter(CategoryListContract.View view) {
+    public CategoryAdapter(CategoryListActivity activity) {
         super(new CategoryDiffUtil());
-        this.view = view;
+        this.activity = activity;
     }
 
     static class CategoryViewHolder extends RecyclerView.ViewHolder {
@@ -27,12 +29,6 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapt
         CategoryViewHolder(@NonNull ListItemCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-        }
-
-        void bind(Category category) {
-            binding.setCategory(category);
-            binding.setClickListener(() -> view.showProductList(category.getEndpoint()));
-            binding.executePendingBindings();
         }
     }
 
@@ -63,7 +59,12 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryListAdapt
     public void onBindViewHolder(@NonNull CategoryViewHolder holder,
                                  int position) {
         Category category = getItem(position);
-        holder.bind(category);
+        holder.binding.setCategory(category);
+        holder.binding.setClickListener(view -> {
+            Log.d(TAG, "Clicked: " + category.getName());
+            activity.showProductList(category.getEndpoint());
+        });
+        holder.binding.executePendingBindings();
         holder.itemView.setTag(category);
     }
 }

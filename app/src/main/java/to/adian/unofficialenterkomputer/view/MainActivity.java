@@ -9,7 +9,8 @@ import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements CategoryListFragment.CategoryListInteractionListener {
 
     private static final String TAG = MainActivity.class.getName();
     private BottomNavigationView navigationView;
@@ -24,5 +25,13 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(
                 new TopLevelNavigationHandler());
+    }
+
+    @Override
+    public void onClickCategoryListItem(String endpoint) {
+        Bundle args = new Bundle();
+        args.putString("ENDPOINT", endpoint);
+        Log.d(TAG, "Going to create fragment for displaying data from "
+                + endpoint);
     }
 }

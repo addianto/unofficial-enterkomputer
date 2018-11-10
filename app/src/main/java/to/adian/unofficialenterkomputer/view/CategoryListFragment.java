@@ -1,7 +1,6 @@
 package to.adian.unofficialenterkomputer.view;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +8,25 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.R;
 import to.adian.unofficialenterkomputer.adapter.CategoryAdapter;
-import to.adian.unofficialenterkomputer.data.AppDatabase;
-import to.adian.unofficialenterkomputer.repository.CategoryRepository;
+import to.adian.unofficialenterkomputer.util.Injector;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModel;
-import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModelFactory;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CategoryListFragment.OnFragmentInteractionListener} interface
+ * {@link CategoryListFragment.CategoryListInteractionListener} interface
  * to handle interaction events.
  */
 public class CategoryListFragment extends Fragment {
 
     private static final String TAG = CategoryListFragment.class.getName();
-    private OnFragmentInteractionListener mListener;
+    private CategoryListInteractionListener mListener;
     private CategoryListViewModel viewModel;
 
     public CategoryListFragment() {
@@ -40,10 +40,10 @@ public class CategoryListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         RecyclerView categoryList = view.findViewById(R.id.category_list_view);
         viewModel = ViewModelProviders.of(this,
-                getViewModelFactory(getContext()))
+                Injector.getCategoryListViewModelFactory(requireNonNull(getContext())))
                 .get(CategoryListViewModel.class);
 
-        CategoryAdapter adapter = new CategoryAdapter();
+        ListAdapter adapter = new CategoryAdapter(this);
         viewModel.getCategories().observe(this,
                 adapter::submitList);
         categoryList.setAdapter(adapter);
@@ -51,22 +51,21 @@ public class CategoryListFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onClickCategoryListItem(String endpoint) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onClickCategoryListItem(endpoint);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+        if (context instanceof CategoryListInteractionListener) {
+            mListener = (CategoryListInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -85,16 +84,8 @@ public class CategoryListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+    interface CategoryListInteractionListener {
 
-    private static CategoryListViewModelFactory getViewModelFactory(Context context) {
-        return new CategoryListViewModelFactory(
-                CategoryRepository.getInstance(
-                        AppDatabase.getInstance(context).categoryDao()
-                )
-        );
+        void onClickCategoryListItem(String endpoint);
     }
 }

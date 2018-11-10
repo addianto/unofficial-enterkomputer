@@ -15,11 +15,15 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.R;
 import to.adian.unofficialenterkomputer.model.Category;
+import to.adian.unofficialenterkomputer.view.CategoryListFragment;
 
 public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.ViewHolder> {
 
-    public CategoryAdapter() {
+    private CategoryListFragment fragment;
+
+    public CategoryAdapter(CategoryListFragment fragment) {
         super(new CategoryDiffUtil());
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -35,7 +39,8 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.ViewH
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = getItem(position);
-        holder.bind(category);
+        holder.bind(category,
+                view -> fragment.onClickCategoryListItem(category.getEndpoint()));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -48,10 +53,9 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.ViewH
             this.button = button;
         }
 
-        void bind(Category category) {
+        void bind(Category category, View.OnClickListener listener) {
             button.setText(category.getName());
-            button.setOnClickListener(view -> Log.d(TAG, String.format(Locale.ENGLISH,
-                    "Clicked %s button", category.getName())));
+            button.setOnClickListener(listener);
             button.setTag(category);
         }
     }

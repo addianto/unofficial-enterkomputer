@@ -22,7 +22,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_category, parent, false);
+                .inflate(R.layout.list_item_product, parent, false);
         TextView productName = view.findViewById(R.id.product_name);
         TextView productPrice = view.findViewById(R.id.product_price);
 

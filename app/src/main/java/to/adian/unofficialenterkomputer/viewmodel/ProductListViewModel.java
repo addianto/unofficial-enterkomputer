@@ -14,7 +14,7 @@ public class ProductListViewModel extends ViewModel {
 
     private ProductRepository productRepository;
     private CategoryRepository categoryRepository;
-    private LiveData<Category> category;
+    private MutableLiveData<String> endpointData = new MutableLiveData<>();
 
     public ProductListViewModel(ProductRepository productRepository,
                                 CategoryRepository categoryRepository) {
@@ -22,11 +22,11 @@ public class ProductListViewModel extends ViewModel {
         this.categoryRepository = categoryRepository;
     }
 
-    public void init(String categoryName) {
-        category = categoryRepository.getCategoryByName(categoryName);
+    public void init(String endpoint) {
+        endpointData.setValue(endpoint);
     }
 
     public LiveData<List<Product>> getProducts() {
-        return productRepository.getProductsByCategory(category.getValue());
+        return productRepository.getProductsByCategory(endpointData.getValue());
     }
 }

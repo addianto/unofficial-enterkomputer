@@ -32,7 +32,7 @@ public class ProductListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_category_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_list, container, false);
         Bundle args = getArguments();
         RecyclerView productList = view.findViewById(R.id.product_list_view);
         String categoryName = args.getString(ARG_ENDPOINT);

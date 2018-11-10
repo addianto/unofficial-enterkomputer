@@ -28,7 +28,7 @@ public class ProductRepository {
         return instance;
     }
 
-    public LiveData<List<Product>> getProductsByCategory(Category category) {
-        return dataSource.getProductsByEndpoint(category.getEndpoint());
+    public LiveData<List<Product>> getProductsByCategory(String endpoint) {
+        return dataSource.getProductsByEndpoint(endpoint);
     }
 }

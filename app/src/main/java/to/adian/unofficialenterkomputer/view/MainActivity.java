@@ -1,6 +1,7 @@
 package to.adian.unofficialenterkomputer.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import to.adian.unofficialenterkomputer.R;
 import to.adian.unofficialenterkomputer.handler.TopLevelNavigationHandler;
 
@@ -29,9 +30,18 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClickCategoryListItem(String endpoint) {
-        Bundle args = new Bundle();
-        args.putString(ProductListFragment.ARG_ENDPOINT, endpoint);
         Log.d(TAG, "Going to create fragment for displaying data from "
                 + endpoint);
+
+        ProductListFragment fragment = new ProductListFragment();
+        Bundle args = new Bundle();
+        args.putString(ProductListFragment.ARG_ENDPOINT, endpoint);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 }

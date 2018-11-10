@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClickCategoryListItem(String endpoint) {
         Bundle args = new Bundle();
-        args.putString("ENDPOINT", endpoint);
+        args.putString(ProductListFragment.ARG_ENDPOINT, endpoint);
         Log.d(TAG, "Going to create fragment for displaying data from "
                 + endpoint);
     }

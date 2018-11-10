@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.view;
+package to.adian.unofficialenterkomputer.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.R;
-import to.adian.unofficialenterkomputer.adapter.CategoryAdapter;
+import to.adian.unofficialenterkomputer.view.adapter.CategoryAdapter;
 import to.adian.unofficialenterkomputer.util.Injector;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModel;
 
@@ -44,8 +44,11 @@ public class CategoryListFragment extends Fragment {
                 .get(CategoryListViewModel.class);
 
         ListAdapter adapter = new CategoryAdapter(this);
-        viewModel.getCategories().observe(this,
-                adapter::submitList);
+        viewModel.getCategories().observe(this, categories -> {
+            if (categories != null && !categories.isEmpty()) {
+                adapter.submitList(categories);
+            }
+        });
         categoryList.setAdapter(adapter);
 
         return view;
@@ -84,7 +87,7 @@ public class CategoryListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    interface CategoryListInteractionListener {
+    public interface CategoryListInteractionListener {
 
         void onClickCategoryListItem(String endpoint);
     }

@@ -5,9 +5,8 @@
     android:layout_height="match_parent">
 
     <!-- Main content -->
-    <fragment
+    <FrameLayout
         android:id="@+id/container"
-        android:name="to.adian.unofficialenterkomputer.view.CategoryListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"

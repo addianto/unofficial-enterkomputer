@@ -5,7 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import to.adian.unofficialenterkomputer.data.AppDatabase;
-import to.adian.unofficialenterkomputer.data.ProductRemoteDataSource;
+import to.adian.unofficialenterkomputer.data.remote.ProductRemoteDataSource;
+import to.adian.unofficialenterkomputer.data.remote.ProductWebService;
 import to.adian.unofficialenterkomputer.repository.CategoryRepository;
 import to.adian.unofficialenterkomputer.repository.ProductRepository;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModelFactory;
@@ -25,10 +26,9 @@ public class Injector {
         return new CategoryListViewModelFactory(repository);
     }
 
-    public static ProductListViewModelFactory getProductListViewModelFactory(@NonNull Context context,
-                                                                             @NonNull ProductRemoteDataSource dataSource) {
+    public static ProductListViewModelFactory getProductListViewModelFactory(@NonNull Context context) {
         Log.d(TAG, "Getting a view model factory for product list");
-        ProductRepository productRepository = getProductRepository(dataSource);
+        ProductRepository productRepository = getProductRepository(context);
         CategoryRepository categoryRepository = getCategoryRepository(context);
         return new ProductListViewModelFactory(productRepository,
                 categoryRepository);
@@ -41,8 +41,9 @@ public class Injector {
         );
     }
 
-    private static ProductRepository getProductRepository(ProductRemoteDataSource dataSource) {
+    private static ProductRepository getProductRepository(Context context) {
         Log.d(TAG, "Getting a product repository");
+        ProductRemoteDataSource dataSource = new ProductWebService(context);
         return ProductRepository.getInstance(dataSource);
     }
 }

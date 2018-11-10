@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.adapter;
+package to.adian.unofficialenterkomputer.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.R;
 import to.adian.unofficialenterkomputer.model.Product;
+import to.adian.unofficialenterkomputer.view.holder.ProductHolder;
 
-public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ViewHolder> {
+public class ProductAdapter extends ListAdapter<Product, ProductHolder> {
 
     public ProductAdapter() {
         super(new ProductDiffUtil());
@@ -20,40 +20,22 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_product, parent, false);
         TextView productName = view.findViewById(R.id.product_name);
         TextView productPrice = view.findViewById(R.id.product_price);
 
-        return new ViewHolder(productName, productPrice);
+        return new ProductHolder(productName, productPrice);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         Product product = getItem(position);
         holder.bind(product);
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private static final String TAG = ViewHolder.class.getName();
-        private TextView productName;
-        private TextView productPrice;
-
-        public ViewHolder(TextView productName, TextView productPrice) {
-            super(productName.getRootView());
-            this.productName = productName;
-            this.productPrice = productPrice;
-        }
-
-        void bind(Product product) {
-            productName.setText(product.getName());
-            productPrice.setText(Integer.toString(product.getPrice()));
-        }
-    }
-
-    static class ProductDiffUtil extends DiffUtil.ItemCallback<Product> {
+    private static class ProductDiffUtil extends DiffUtil.ItemCallback<Product> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {

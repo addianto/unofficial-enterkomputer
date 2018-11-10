@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.data;
+package to.adian.unofficialenterkomputer.data.remote;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
@@ -30,7 +30,7 @@ public class ProductWebService implements ProductRemoteDataSource {
         MutableLiveData<List<Product>> productsData = new MutableLiveData<>();
         JsonArrayRequest request = new JsonArrayRequest(url,
                 response -> {
-                    List<Product> products = Collections.emptyList();
+                    List<Product> products = new ArrayList<>();
                     for (int i = 0; i < response.length(); i++) {
                         try {
                             JSONObject obj = response.getJSONObject(i);

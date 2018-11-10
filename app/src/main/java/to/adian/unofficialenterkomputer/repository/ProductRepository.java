@@ -5,8 +5,7 @@ import android.util.Log;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
-import to.adian.unofficialenterkomputer.data.ProductRemoteDataSource;
-import to.adian.unofficialenterkomputer.model.Category;
+import to.adian.unofficialenterkomputer.data.remote.ProductRemoteDataSource;
 import to.adian.unofficialenterkomputer.model.Product;
 
 public class ProductRepository {

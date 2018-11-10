@@ -1,23 +1,19 @@
-package to.adian.unofficialenterkomputer.adapter;
+package to.adian.unofficialenterkomputer.view.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.button.MaterialButton;
-
-import java.util.Locale;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import to.adian.unofficialenterkomputer.R;
 import to.adian.unofficialenterkomputer.model.Category;
-import to.adian.unofficialenterkomputer.view.CategoryListFragment;
+import to.adian.unofficialenterkomputer.view.fragment.CategoryListFragment;
+import to.adian.unofficialenterkomputer.view.holder.CategoryHolder;
 
-public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.ViewHolder> {
+public class CategoryAdapter extends ListAdapter<Category, CategoryHolder> {
 
     private CategoryListFragment fragment;
 
@@ -28,39 +24,22 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.ViewH
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_category, parent, false);
-        MaterialButton button = view.findViewById(R.id.category_button);
+        Button button = view.findViewById(R.id.category_button);
 
-        return new ViewHolder(button);
+        return new CategoryHolder(button);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
         Category category = getItem(position);
         holder.bind(category,
                 view -> fragment.onClickCategoryListItem(category.getEndpoint()));
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private static final String TAG = ViewHolder.class.getName();
-        private MaterialButton button;
-
-        public ViewHolder(@NonNull MaterialButton button) {
-            super(button.getRootView());
-            this.button = button;
-        }
-
-        void bind(Category category, View.OnClickListener listener) {
-            button.setText(category.getName());
-            button.setOnClickListener(listener);
-            button.setTag(category);
-        }
-    }
-
-    static class CategoryDiffUtil extends DiffUtil.ItemCallback<Category> {
+    private static class CategoryDiffUtil extends DiffUtil.ItemCallback<Category> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Category oldItem, @NonNull Category newItem) {

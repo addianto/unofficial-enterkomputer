@@ -1,4 +1,4 @@
-package to.adian.unofficialenterkomputer.data;
+package to.adian.unofficialenterkomputer.data.remote;
 
 import java.util.List;
 

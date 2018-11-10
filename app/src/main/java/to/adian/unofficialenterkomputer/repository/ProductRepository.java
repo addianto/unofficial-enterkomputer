@@ -19,10 +19,10 @@ public class ProductRepository {
         this.dataSource = dataSource;
     }
 
-    public static synchronized ProductRepository getInstance(ProductRemoteDataSource webService) {
+    public static synchronized ProductRepository getInstance(ProductRemoteDataSource dataSource) {
         if (instance == null) {
             Log.d(TAG, "Creating the product repository for the first time");
-            instance = new ProductRepository(webService);
+            instance = new ProductRepository(dataSource);
         }
 
         return instance;

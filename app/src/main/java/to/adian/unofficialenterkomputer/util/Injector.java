@@ -8,6 +8,7 @@ import to.adian.unofficialenterkomputer.data.AppDatabase;
 import to.adian.unofficialenterkomputer.data.ProductRemoteDataSource;
 import to.adian.unofficialenterkomputer.data.ProductWebService;
 import to.adian.unofficialenterkomputer.repository.CategoryRepository;
+import to.adian.unofficialenterkomputer.repository.ProductRepository;
 import to.adian.unofficialenterkomputer.viewmodel.CategoryListViewModelFactory;
 
 public class Injector {
@@ -24,15 +25,15 @@ public class Injector {
         return new CategoryListViewModelFactory(repository);
     }
 
-    public static ProductRemoteDataSource getProductWebService(Context context) {
-        Log.d(TAG, "Getting a Web service helper for obtaining products data");
-        return new ProductWebService(context);
-    }
-
     private static CategoryRepository getCategoryRepository(Context context) {
         Log.d(TAG, "Getting a category repository");
         return CategoryRepository.getInstance(
                 AppDatabase.getInstance(context).categoryDao()
         );
+    }
+
+    private static ProductRepository getProductRepository(ProductRemoteDataSource dataSource) {
+        Log.d(TAG, "Getting a product repository");
+        return ProductRepository.getInstance(dataSource);
     }
 }

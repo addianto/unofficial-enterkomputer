@@ -12,11 +12,13 @@ public class Product {
     private final int id;
     private final String name;
     private final int price;
+    private final String category;
 
-    public Product(int id, String name, int price) {
+    public Product(int id, String name, int price, String category) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
     }
 
     public int getId() {
@@ -31,10 +33,14 @@ public class Product {
         return price;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
         return String.format(Locale.ENGLISH,
-                "Product(id=%d, name=%s, price=%d)",
-                id, name, price);
+                "Product(id=%d, name=%s, price=%d, category=%s)",
+                id, name, price, category);
     }
 }

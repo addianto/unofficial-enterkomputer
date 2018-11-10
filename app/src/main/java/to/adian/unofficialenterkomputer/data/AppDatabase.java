@@ -11,9 +11,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import to.adian.unofficialenterkomputer.model.Category;
+import to.adian.unofficialenterkomputer.model.Product;
 import to.adian.unofficialenterkomputer.worker.SeedDatabaseWorker;
 
-@Database(entities = {Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Product.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String CATEGORIES_SEED_FILE = "categories.json";

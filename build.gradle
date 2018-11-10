@@ -15,9 +15,12 @@ buildscript {
 
     ext {
         espressoVersion = '3.1.0'
+        gsonVersion = '2.8.5'
         junitVersion = '4.12'
         materialComponentVersion = '1.1.0-alpha01'
+        roomVersion = '2.0.0'
         supportLibraryVersion = '1.0.2'
+        workVersion = '1.0.0-alpha11'
     }
 }
 

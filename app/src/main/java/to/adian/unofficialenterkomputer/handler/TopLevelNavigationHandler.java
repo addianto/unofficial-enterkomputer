@@ -1,5 +1,8 @@
 package to.adian.unofficialenterkomputer.handler;
 
+import android.app.Service;
+import android.content.Context;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -12,6 +15,11 @@ public class TopLevelNavigationHandler implements BottomNavigationView.OnNavigat
 
     private static final String TAG = TopLevelNavigationHandler.class.getName();
     private static final String LOG_SELECTED_FMT = "Selected %s menu item";
+    private Context context;
+
+    public TopLevelNavigationHandler(Context context) {
+        this.context = context;
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -26,6 +34,7 @@ public class TopLevelNavigationHandler implements BottomNavigationView.OnNavigat
                 break;
             case R.id.menu_tracking:
                 Log.d(TAG, String.format(LOG_SELECTED_FMT, title));
+                handleTracking(context);
                 break;
             case R.id.menu_best_seller:
                 Log.d(TAG, String.format(LOG_SELECTED_FMT, title));
@@ -36,5 +45,10 @@ public class TopLevelNavigationHandler implements BottomNavigationView.OnNavigat
         }
 
         return true;
+    }
+
+    private void handleTracking(Context context) {
+        WifiManager manager = (WifiManager) context.getSystemService(Service.WIFI_SERVICE);
+        manager.startScan();
     }
 }

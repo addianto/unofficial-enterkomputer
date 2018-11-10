@@ -2,8 +2,12 @@ package to.adian.unofficialenterkomputer.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import to.adian.unofficialenterkomputer.R;
+import to.adian.unofficialenterkomputer.WifiBroadcastReceiver;
 import to.adian.unofficialenterkomputer.handler.TopLevelNavigationHandler;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,7 +28,11 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "Setting up bottom navigation view");
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(
-                new TopLevelNavigationHandler());
+                new TopLevelNavigationHandler(this));
+
+        BroadcastReceiver wifiReceiver = new WifiBroadcastReceiver(this);
+        IntentFilter filter = new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        registerReceiver(wifiReceiver, filter);
     }
 
     @Override

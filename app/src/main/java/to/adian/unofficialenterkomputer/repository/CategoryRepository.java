@@ -27,6 +27,10 @@ public class CategoryRepository {
         return instance;
     }
 
+    public LiveData<Category> getCategoryByName(String name) {
+        return dao.getCategoryByName(name);
+    }
+
     public LiveData<List<Category>> getCategories() {
         return dao.getCategories();
     }

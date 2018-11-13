@@ -7,13 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import to.adian.unofficialenterkomputer.model.Category;
+import to.adian.unofficialenterkomputer.model.Product;
 import to.adian.unofficialenterkomputer.worker.SeedDatabaseWorker;
 
-@Database(entities = {Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Product.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String CATEGORIES_SEED_FILE = "categories.json";
@@ -37,6 +39,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase buildDatabase(Context context) {
         return Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
                 .addCallback(new CreateDBCallback())
+                .addMigrations(MIGRATION_1_2)
                 .build();
     }
 
@@ -52,4 +55,15 @@ public abstract class AppDatabase extends RoomDatabase {
             WorkManager.getInstance().enqueue(request);
         }
     }
+
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE `products` (`name` TEXT," +
+                    "`id` INTEGER NOT NULL PRIMARY KEY," +
+                    "`category` TEXT," +
+                    "`price` INTEGER NOT NULL)");
+        }
+    };
 }

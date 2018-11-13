@@ -19,6 +19,9 @@ public interface CategoryDao {
     @Query("SELECT * FROM categories WHERE id = :id")
     LiveData<Category> getCategory(int id);
 
+    @Query("SELECT * FROM CATEGORIES WHERE name = :name")
+    LiveData<Category> getCategoryByName(String name);
+
     @Insert(onConflict = REPLACE)
     void insertAll(List<Category> categories);
 }

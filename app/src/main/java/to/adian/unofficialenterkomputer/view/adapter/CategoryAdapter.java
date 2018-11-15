@@ -36,7 +36,7 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryHolder> {
     public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
         Category category = getItem(position);
         holder.bind(category,
-                view -> fragment.onClickCategoryListItem(category.getEndpoint()));
+                view -> fragment.onClickCategoryListItem(category.getEndpoint().toString()));
     }
 
     private static class CategoryDiffUtil extends DiffUtil.ItemCallback<Category> {

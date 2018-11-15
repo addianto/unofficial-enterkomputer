@@ -28,7 +28,14 @@ public class ConvertersTest {
     }
 
     @Test
-    public void UrlToString_givenValidUrl_returnsString() {
+    public void stringToUrl_givenRealValidString_returnsUrl() throws MalformedURLException {
+        URL expected = new URL("https", "www.enterkomputer.com", "/api/product/accessories.json");
+        URL result = converters.stringToURL("https://www.enterkomputer.com/api/product/accessories.json");
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void urlToString_givenValidUrl_returnsString() {
         String result = converters.urlToString(urlFixture);
         assertEquals(stringFixture, result);
     }

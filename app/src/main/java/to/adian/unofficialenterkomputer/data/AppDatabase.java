@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
@@ -16,6 +17,7 @@ import to.adian.unofficialenterkomputer.model.Product;
 import to.adian.unofficialenterkomputer.worker.SeedDatabaseWorker;
 
 @Database(entities = {Category.class, Product.class}, version = 2, exportSchema = false)
+@TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String CATEGORIES_SEED_FILE = "categories.json";

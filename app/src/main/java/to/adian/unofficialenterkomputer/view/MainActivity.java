@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "Setting up bottom navigation view");
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(
-                new TopLevelNavigationHandler());
+                new TopLevelNavigationHandler(this));
 
         Log.d(TAG, "Displaying category list");
         Fragment categoryList = new CategoryListFragment();

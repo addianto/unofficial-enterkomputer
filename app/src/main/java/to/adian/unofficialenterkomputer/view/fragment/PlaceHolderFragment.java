@@ -30,7 +30,7 @@ public class PlaceHolderFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.v(TAG, "Executing onCreate() callback");
+        Log.d(TAG, "Executing onCreate() callback");
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
 
@@ -42,7 +42,7 @@ public class PlaceHolderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.v(TAG, "Executing onCreateView() callback");
+        Log.d(TAG, "Executing onCreateView() callback");
         View fragment = inflater.inflate(R.layout.fragment_placeholder,
                 container, false);
 
@@ -52,5 +52,4 @@ public class PlaceHolderFragment extends Fragment {
 
         return fragment;
     }
-
 }
